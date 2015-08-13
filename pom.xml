@@ -4,7 +4,7 @@
 
     <groupId>de.zh32</groupId>
     <artifactId>TeleportSigns</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
     <packaging>jar</packaging>
 
     <name>TeleportSigns</name>
@@ -21,18 +21,8 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
-        <repository>
-            <id>Plugin Metrics</id>
-            <url>http://repo.mcstats.org/content/repositories/public</url>
-        </repository>
     </repositories>  
     <dependencies>
-        <dependency>
-            <groupId>org.mcstats</groupId>
-            <artifactId>metrics</artifactId>
-            <version>1.2-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>

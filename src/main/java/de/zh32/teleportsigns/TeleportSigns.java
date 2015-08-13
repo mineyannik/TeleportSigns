@@ -12,7 +12,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
 
 /**
  *
@@ -39,8 +38,6 @@ public class TeleportSigns extends JavaPlugin {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         
         Bukkit.getScheduler().runTaskLaterAsynchronously(this, updateUtil, 20);
-        
-        startMetrics();
     }
     
     @Override
@@ -60,33 +57,6 @@ public class TeleportSigns extends JavaPlugin {
         } catch (PersistenceException ex) {
             Bukkit.getLogger().log(Level.INFO, "Installing database for {0} due to first time usage", getDescription().getName());
             installDDL();
-        }
-    }
-    
-    private void startMetrics() {
-        try {
-            Metrics metrics = new Metrics(this);
-            Metrics.Graph signCount = metrics.createGraph("Sign count");
-            signCount.addPlotter(new Metrics.Plotter() {
-
-                @Override
-                public int getValue() {
-                    return data.getSigns().size();
-                }
-            });
-            
-            Metrics.Graph serverCount = metrics.createGraph("Server count");
-            serverCount.addPlotter(new Metrics.Plotter() {
-
-                @Override
-                public int getValue() {
-                    return data.getServers().size();
-                }
-            });
-            
-            metrics.start();
-        } catch (IOException e) {
-            // Failed to submit the stats :-(
         }
     }
     
